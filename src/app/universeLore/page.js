@@ -143,6 +143,76 @@ export default function UniverseLore() {
             </tbody>
           </table>
         </div>
+        <div> Max Ship Sizes & Hull Thickness (Steel Alloy Reference Table)</div>
+        <table className="table-auto border-collapse border border-gray-400 w-full text-sm text-left">
+  <thead className="bg-gray-100">
+    <tr>
+      <th className="border border-gray-300 px-4 py-2">Gravity Range</th>
+      <th className="border border-gray-300 px-4 py-2">Midpoint Gravity (g)</th>
+      <th className="border border-gray-300 px-4 py-2">Max Ship Size (m)</th>
+      <th className="border border-gray-300 px-4 py-2">Max Ship Size (km)</th>
+      <th className="border border-gray-300 px-4 py-2">Min Hull Thickness (m)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td className="border px-4 py-2">0g</td>
+      <td className="border px-4 py-2">0.00</td>
+      <td className="border px-4 py-2">10,000.00</td>
+      <td className="border px-4 py-2">10.000</td>
+      <td className="border px-4 py-2">0.020</td>
+    </tr>
+    <tr>
+      <td className="border px-4 py-2">0.1–0.3g</td>
+      <td className="border px-4 py-2">0.20</td>
+      <td className="border px-4 py-2">894.43</td>
+      <td className="border px-4 py-2">0.894</td>
+      <td className="border px-4 py-2">0.027</td>
+    </tr>
+    <tr>
+      <td className="border px-4 py-2">0.3–0.6g</td>
+      <td className="border px-4 py-2">0.45</td>
+      <td className="border px-4 py-2">596.28</td>
+      <td className="border px-4 py-2">0.596</td>
+      <td className="border px-4 py-2">0.028</td>
+    </tr>
+    <tr>
+      <td className="border px-4 py-2">0.6–1g</td>
+      <td className="border px-4 py-2">0.80</td>
+      <td className="border px-4 py-2">447.21</td>
+      <td className="border px-4 py-2">0.447</td>
+      <td className="border px-4 py-2">0.029</td>
+    </tr>
+    <tr>
+      <td className="border px-4 py-2">1–1.5g</td>
+      <td className="border px-4 py-2">1.25</td>
+      <td className="border px-4 py-2">357.77</td>
+      <td className="border px-4 py-2">0.358</td>
+      <td className="border px-4 py-2">0.031</td>
+    </tr>
+    <tr>
+      <td className="border px-4 py-2">1.5–2g</td>
+      <td className="border px-4 py-2">1.75</td>
+      <td className="border px-4 py-2">302.37</td>
+      <td className="border px-4 py-2">0.302</td>
+      <td className="border px-4 py-2">0.032</td>
+    </tr>
+    <tr>
+      <td className="border px-4 py-2">2–2.5g</td>
+      <td className="border px-4 py-2">2.25</td>
+      <td className="border px-4 py-2">266.67</td>
+      <td className="border px-4 py-2">0.267</td>
+      <td className="border px-4 py-2">0.032</td>
+    </tr>
+    <tr>
+      <td className="border px-4 py-2">2.5–3g</td>
+      <td className="border px-4 py-2">2.75</td>
+      <td className="border px-4 py-2">241.21</td>
+      <td className="border px-4 py-2">0.241</td>
+      <td className="border px-4 py-2">0.033</td>
+    </tr>
+  </tbody>
+</table>
       </section>
     </div>
   );
