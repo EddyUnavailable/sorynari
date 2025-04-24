@@ -72,6 +72,8 @@ export default function UniverseLore() {
               </tr>
             </tbody>
           </table>
+
+
           <h2 className="text-2xl font-semibold mt-4 mb-2">📜 Galactic Tech Rules</h2>
       <ul className="list-disc list-inside space-y-2">
         <li><strong>No Warp Drive:</strong> Hyperspace is the only method of interstellar travel, and it is slow and dangerous.</li>
@@ -143,74 +145,144 @@ export default function UniverseLore() {
             </tbody>
           </table>
         </div>
+        
         <div> Max Ship Sizes & Hull Thickness (Steel Alloy Reference Table)</div>
-        <table className="table-auto border-collapse border border-gray-400 w-full text-sm text-left">
+       
+
+<table className="table-auto border-collapse border border-gray-400 w-full text-sm text-left">
   <thead className="bg-gray-100">
     <tr>
-      <th className="border border-gray-300 px-4 py-2">Gravity Range</th>
-      <th className="border border-gray-300 px-4 py-2">Midpoint Gravity (g)</th>
-      <th className="border border-gray-300 px-4 py-2">Max Ship Size (m)</th>
-      <th className="border border-gray-300 px-4 py-2">Max Ship Size (km)</th>
-      <th className="border border-gray-300 px-4 py-2">Min Hull Thickness (m)</th>
+      <th className="border border-gray-300 px-4 py-2">Layer</th>
+      <th className="border border-gray-300 px-4 py-2">Purpose</th>
+      <th className="border border-gray-300 px-4 py-2">Notes / Modules</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td className="border px-4 py-2">0g</td>
-      <td className="border px-4 py-2">0.00</td>
-      <td className="border px-4 py-2">10,000.00</td>
-      <td className="border px-4 py-2">10.000</td>
-      <td className="border px-4 py-2">0.020</td>
+    <tr className="bg-gray-50">
+      <td className="border px-4 py-2">1. Padding (Optional)</td>
+      <td className="border px-4 py-2">Encases wires, pipes; adds crew cushioning</td>
+      <td className="border px-4 py-2">Thermal insulation, minor impact resistance</td>
     </tr>
     <tr>
-      <td className="border px-4 py-2">0.1–0.3g</td>
-      <td className="border px-4 py-2">0.20</td>
-      <td className="border px-4 py-2">894.43</td>
-      <td className="border px-4 py-2">0.894</td>
-      <td className="border px-4 py-2">0.027</td>
+      <td className="border px-4 py-2">2. Hull (Mandatory)</td>
+      <td className="border px-4 py-2">Primary structural frame</td>
+      <td className="border px-4 py-2">Made from steel alloy, composites, or exotic materials</td>
+    </tr>
+    <tr className="bg-gray-50">
+      <td className="border px-4 py-2">3. Thermal/Radiation Layer</td>
+      <td className="border px-4 py-2">Protects from space radiation and heat extremes</td>
+      <td className="border px-4 py-2">
+        <ul className="list-disc list-inside">
+          <li>Coolant Systems – circulates heat away from core modules</li>
+          <li>Heat Radiators / Sinks – expel heat into space via fins/panels</li>
+          <li>Radiation-absorbing composites</li>
+        </ul>
+      </td>
     </tr>
     <tr>
-      <td className="border px-4 py-2">0.3–0.6g</td>
-      <td className="border px-4 py-2">0.45</td>
-      <td className="border px-4 py-2">596.28</td>
-      <td className="border px-4 py-2">0.596</td>
-      <td className="border px-4 py-2">0.028</td>
+      <td className="border px-4 py-2">4. Specialized Thermal Layer</td>
+      <td className="border px-4 py-2">Optional redundancy or regional reinforcement</td>
+      <td className="border px-4 py-2">
+        <ul className="list-disc list-inside">
+          <li>Localized coolant reservoirs</li>
+          <li>Adaptive thermal barriers</li>
+        </ul>
+      </td>
+    </tr>
+    <tr className="bg-gray-50">
+      <td className="border px-4 py-2">5. Radiation Dampening (Factional)</td>
+      <td className="border px-4 py-2">Shields crew from stellar storms, warp backlash</td>
+      <td className="border px-4 py-2">
+        <ul className="list-disc list-inside">
+          <li>Lead-lattice, exotic matter, or quantum filters</li>
+          <li>Coolant overflow channels</li>
+        </ul>
+      </td>
     </tr>
     <tr>
-      <td className="border px-4 py-2">0.6–1g</td>
-      <td className="border px-4 py-2">0.80</td>
-      <td className="border px-4 py-2">447.21</td>
-      <td className="border px-4 py-2">0.447</td>
-      <td className="border px-4 py-2">0.029</td>
+      <td className="border px-4 py-2">6. Armour (Mandatory)</td>
+      <td className="border px-4 py-2">Defends against weapons & micrometeor impacts</td>
+      <td className="border px-4 py-2">Layered alloys, ceramic plates, reactive panels</td>
+    </tr>
+    <tr className="bg-gray-50">
+      <td className="border px-4 py-2">7. Shield Layer</td>
+      <td className="border px-4 py-2">Projected or static energy shields</td>
+      <td className="border px-4 py-2">Magnetic, plasma, or phase field technology</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table className="table-auto border-collapse border border-gray-400 w-full text-sm text-left">
+  <thead className="bg-gray-100">
+    <tr>
+      <th className="border border-gray-300 px-4 py-2">Category</th>
+      <th className="border border-gray-300 px-4 py-2">System / Module</th>
+      <th className="border border-gray-300 px-4 py-2">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr className="bg-gray-50">
+      <td className="border px-4 py-2" rowSpan="5">🧠 Core Control</td>
+      <td className="border px-4 py-2">Cockpit / Bridge</td>
+      <td className="border px-4 py-2">Command and navigation center</td>
     </tr>
     <tr>
-      <td className="border px-4 py-2">1–1.5g</td>
-      <td className="border px-4 py-2">1.25</td>
-      <td className="border px-4 py-2">357.77</td>
-      <td className="border px-4 py-2">0.358</td>
-      <td className="border px-4 py-2">0.031</td>
+      <td className="border px-4 py-2">Power Control</td>
+      <td className="border px-4 py-2">Manages power distribution and failover</td>
     </tr>
     <tr>
-      <td className="border px-4 py-2">1.5–2g</td>
-      <td className="border px-4 py-2">1.75</td>
-      <td className="border px-4 py-2">302.37</td>
-      <td className="border px-4 py-2">0.302</td>
-      <td className="border px-4 py-2">0.032</td>
+      <td className="border px-4 py-2">Fire Control</td>
+      <td className="border px-4 py-2">Coordinates weapon targeting and timing</td>
     </tr>
     <tr>
-      <td className="border px-4 py-2">2–2.5g</td>
-      <td className="border px-4 py-2">2.25</td>
-      <td className="border px-4 py-2">266.67</td>
-      <td className="border px-4 py-2">0.267</td>
-      <td className="border px-4 py-2">0.032</td>
+      <td className="border px-4 py-2">Shield Control</td>
+      <td className="border px-4 py-2">Regulates shields or forcefield defenses</td>
     </tr>
     <tr>
-      <td className="border px-4 py-2">2.5–3g</td>
-      <td className="border px-4 py-2">2.75</td>
-      <td className="border px-4 py-2">241.21</td>
-      <td className="border px-4 py-2">0.241</td>
-      <td className="border px-4 py-2">0.033</td>
+      <td className="border px-4 py-2">Damage Control</td>
+      <td className="border px-4 py-2">Monitors ship integrity, automates repairs</td>
     </tr>
+
+    <tr className="bg-gray-50">
+      <td className="border px-4 py-2" rowSpan="6">⚡ Power</td>
+      <td className="border px-4 py-2">Reactor / Core</td>
+      <td className="border px-4 py-2">Generates ship-wide power (fusion, antimatter, etc.)</td>
+    </tr>
+    <tr>
+      <td className="border px-4 py-2">Power Conduits / Backup</td>
+      <td className="border px-4 py-2">Distributes and stores power internally</td>
+    </tr>
+
+    <tr className="bg-gray-50">
+      <td className="border px-4 py-2" rowSpan="2">🧬 Life Systems</td>
+      <td className="border px-4 py-2">Life Support</td>
+      <td className="border px-4 py-2">Air, water, waste, temperature, internal biosphere</td>
+    </tr>
+    <tr>
+      <td className="border px-4 py-2">Living Quarters</td>
+      <td className="border px-4 py-2">Crew accommodations</td>
+    </tr>
+
+    <tr className="bg-gray-50">
+      <td className="border px-4 py-2" rowSpan="4">🔧 Engineering & Maintenance</td>
+      <td className="border px-4 py-2">Maintenance Bots / Drones</td>
+      <td className="border px-4 py-2">Auto-repair, cleaning, hull walkarounds</td>
+    </tr>
+    <tr>
+      <td className="border px-4 py-2">Spare Parts Storage</td>
+      <td className="border px-4 py-2">Onboard mechanical stockpiles</td>
+    </tr>
+    <tr>
+      <td className="border px-4 py-2">Nanite Repair Systems</td>
+      <td className="border px-4 py-2">Automated nano-level internal repairs (high-tech)</td>
+    </tr>
+    <tr>
+      <td className="border px-4 py-2">Fuel Storage / Transfer</td>
+      <td className="border px-4 py-2">Stores and manages fuel for engines or reactors</td>
+    </tr>
+
+    {/* <!-- You can continue appending other categories like Habitation, Defense, Mobility, etc. --> */}
   </tbody>
 </table>
       </section>
