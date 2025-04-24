@@ -37,13 +37,13 @@ export default function StoryIdeas() {
           The VIV approached Earth silently, positioning itself behind a gas giant to mask emissions. The Sorynari launched an initial fleet of drones and landed on three continents simultaneously. Their appearance — graceful, alien, catlike — triggered both fascination and fear.
         </p>
         <p>
-          Despite the Sorynari’s technological edge, Earth resisted. Nations allied in desperation. The war lasted 9 Earth years.
+          Despite the Sorynari&apos;s technological edge, Earth resisted. Nations allied in desperation. The war lasted 9 Earth years.
         </p>
         <p>
-          The Sorynari did not use lethal force unless necessary, preserving infrastructure and populations. But Earth’s militaries suffered heavily. Satellites were disabled. Communications cut. Cities occupied. Entire armies humiliated.
+          The Sorynari did not use lethal force unless necessary, preserving infrastructure and populations. But Earth&apos;s militaries suffered heavily. Satellites were disabled. Communications cut. Cities occupied. Entire armies humiliated.
         </p>
         <p>
-          Eventually, Earth's nations surrendered under a unified treaty.
+          Eventually, Earth&apos;s nations surrendered under a unified treaty.
         </p>
         <p>
           The Sorynari established a World Council, selecting cooperative human leaders to act as intermediaries. Education programs began, infrastructure was rebuilt, and environmental damage was slowly reversed.

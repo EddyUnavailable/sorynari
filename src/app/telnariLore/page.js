@@ -24,7 +24,7 @@ export default function telnariLore() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-2">🧠 Cognition</h2>
           <p>
-            The Telnari perceive time in a layered, non-linear fashion via an ability called <strong>"Threading"</strong>, which lets them simulate possible timelines before acting.
+            The Telnari perceive time in a layered, non-linear fashion via an ability called <strong>Threading</strong>, which lets them simulate possible timelines before acting.
             Emotional communication involves gesture, scent-based pulses, and bio-luminescent signals.
           </p>
         </section>
@@ -32,7 +32,7 @@ export default function telnariLore() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-2">🏛 Culture</h2>
           <p>
-            Governed by the <strong>Council of Threads</strong>, decisions are made through simulated timeline consensus. Their philosophy — "All things cast echoes forward" — emphasizes careful, predictive decision-making.
+            Governed by the <strong>Council of Threads</strong>, decisions are made through simulated timeline consensus. Their philosophy — All things cast echoes forward — emphasizes careful, predictive decision-making.
             Art forms blend light, scent, and resonance. Music is experienced through physical vibration.
           </p>
         </section>
@@ -54,7 +54,7 @@ export default function telnariLore() {
         <section>
           <h2 className="text-2xl font-semibold mb-2">🌌 Legacy</h2>
           <p>
-            Though they left no permanent presence, the Telnari inspired the Sorynari to seed AI oracles in human colonies. Their legacy is whispered in Sorynari high councils as "The Whispered Guides."
+            Though they left no permanent presence, the Telnari inspired the Sorynari to seed AI oracles in human colonies. Their legacy is whispered in Sorynari high councils as The Whispered Guides.
           </p>
         </section>
       </main>

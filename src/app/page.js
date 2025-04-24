@@ -6,7 +6,7 @@ export default function HomePage() {
     <main className="flex min-h-screen flex-col items-center justify-center p-10 bg-gradient-to-b from-black via-gray-900 to-gray-800 text-white">
       <h1 className="text-5xl font-bold mb-4">🪐 Welcome to the Galactic Lore Archive</h1>
       <p className="text-lg text-gray-300 max-w-2xl text-center mb-8">
-        Discover the intricate histories, cultures, technologies, and hierarchies of the galaxy’s most powerful and mysterious civilizations.
+        Discover the intricate histories, cultures, technologies, and hierarchies of the galaxy&apos;s most powerful and mysterious civilizations.
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
