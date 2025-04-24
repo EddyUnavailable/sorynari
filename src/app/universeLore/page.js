@@ -72,6 +72,17 @@ export default function UniverseLore() {
               </tr>
             </tbody>
           </table>
+          <h2 className="text-2xl font-semibold mt-4 mb-2">📜 Galactic Tech Rules</h2>
+      <ul className="list-disc list-inside space-y-2">
+        <li><strong>No Warp Drive:</strong> Hyperspace is the only method of interstellar travel, and it is slow and dangerous.</li>
+        <li><strong>Small-Scale Nanotech Only:</strong> Used in medicine and fine tech repair. No replication, no macro-construction.</li>
+        <li><strong>Fragile Computing:</strong> Advanced but unreliable. Systems fail regularly. No galactic internet.</li>
+        <li><strong>Limited AI:</strong> No sentient AI. Expert systems only. Human or alien input is still vital.</li>
+        <li><strong>Cargo Ships:</strong> Semi-autonomous but require manual course correction. Vulnerable to interception.</li>
+        <li><strong>No Instant Healing:</strong> Biological damage is real. Clones or implants help but need time and precision.</li>
+        <li><strong>Delayed Communication:</strong> Quantum systems are unreliable at distance. Most messages are relayed or carried physically.</li>
+        <li><strong>Risky Hyperspace:</strong> Drives degrade. Accidents common. Elite drives are rare and costly to maintain.</li>
+      </ul>
         </div>
       </section>
 
