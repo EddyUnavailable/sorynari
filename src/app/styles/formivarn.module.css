@@ -1,0 +1,25 @@
+.container {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  .title {
+    color: var(--color-primary);
+  }
+  
+  .subtitle {
+    color: var(--color-secondary);
+  }
+  
+  .list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .listItem {
+    margin: 10px 0;
+  }
+  
+  .strong {
+    font-weight: bold;
+  }
