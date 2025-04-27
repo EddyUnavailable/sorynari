@@ -19,7 +19,7 @@ export default function storyRules() {
               <li>
                 <strong className={styles.listItemStrong}>No reference to the planet's name:</strong>
                 <ul>
-                  <li>The planet and its people are referenced only by <strong>designations</strong> (e.g., *Species Designation XHU9512* from *System OCA122437XX9*).</li>
+                  <li>The planet and its people are referenced only by <strong>designations</strong> (e.g., *Species Designation XHU9512* from *System OCAG2V122437XX9*).</li>
                   <li>This creates a <strong>detached</strong> and <strong>impersonal</strong> atmosphere, emphasizing the Sorynari’s view of the planet as an object, not a home.</li>
                 </ul>
               </li>
