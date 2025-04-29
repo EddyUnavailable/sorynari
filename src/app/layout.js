@@ -22,6 +22,7 @@ export default function RootLayout({ children }) {
             <Link href="/telnariLore" className="hover:text-purple-400">🌌 Telnari</Link>
             <Link href="/futureRaces" className="hover:text-purple-400">🌌 Future Races</Link>
             <Link href="/storyRules" className="hover:text-purple-400">🌌 Story Ruless</Link>
+            <Link href="/chapterOne" className="hover:text-purple-400">🌌 The Story</Link>
           </nav>
         </header>
 

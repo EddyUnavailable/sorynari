@@ -1,0 +1,46 @@
+.chapter {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  color: #ddd;
+  background-color: #111;
+}
+
+.chapterTitle {
+  color: #84d2f6;
+  margin-bottom: 1rem;
+}
+
+.chapterHeading {
+  color: #84d2f6;
+  margin-bottom: 1rem;
+}
+
+.chapterParagraph {
+  margin-bottom: 1.2rem;
+}
+
+.chapterBlockquote {
+  border-left: 3px solid #84d2f6;
+  margin: 1rem 0;
+  padding-left: 1rem;
+  color: #bbb;
+  font-style: italic;
+}
+
+.transmission {
+  color: #f98;
+  font-weight: bold;
+  background-color: rgba(255, 150, 0, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.dialogue {
+  color: #f8f8f8;
+  font-style: normal;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
