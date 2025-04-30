@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 
-const TextToSpeech = ({ apiEndpoint = '/api/tts' }) => {
+const TextToSpeech = ({ apiEndpoint = '../api/tts' }) => {
   const [text, setText] = useState('');
   const [audioPath, setAudioPath] = useState('');
 
