@@ -1,4 +1,5 @@
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import { google } from 'googleapis';
 import textToSpeech from '@google-cloud/text-to-speech';
@@ -41,7 +42,8 @@ export default async function handler(req, res) {
       const [response] = await client.synthesizeSpeech(request);
 
       // Save MP3 locally
-      const outputPath = path.join(process.cwd(), 'public', 'output.mp3');
+      const tempDir = os.tmpdir(); // Get the system's temporary directory
+      const outputPath = path.join(tempDir, 'output.mp3'); // Save the file in the temporary directory
       fs.writeFileSync(outputPath, response.audioContent, 'binary');
 
       // Upload MP3 to Google Drive
