@@ -47,7 +47,7 @@ export default async function handler(req, res) {
       // Upload MP3 to Google Drive
       const fileMetadata = {
         name: 'output.mp3',
-        parents: ['YOUR_FOLDER_ID'], // Replace with your Google Drive folder ID
+        parents: ['https://drive.google.com/drive/folders/1bmwWFNEhI-ODs3r9Qh_MXEkThggWQss9'], // Replace with your Google Drive folder ID
       };
       const media = {
         mimeType: 'audio/mpeg',
