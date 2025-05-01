@@ -6,10 +6,10 @@ import textToSpeech from '@google-cloud/text-to-speech';
 const client = new textToSpeech.TextToSpeechClient();
 
 // Google Drive setup
-const CLIENT_ID = 'YOUR_CLIENT_ID';
-const CLIENT_SECRET = 'YOUR_CLIENT_SECRET';
+const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const REDIRECT_URI = 'https://developers.google.com/oauthplayground'; // Or your app's redirect URI
-const REFRESH_TOKEN = 'YOUR_REFRESH_TOKEN'; // Obtain this during OAuth setup
+const ACCESS_TOKEN = process.env.GOOGLE_ACCESS_TOKEN; // Obtain this during OAuth setup
 
 const oauth2Client = new google.auth.OAuth2(
   CLIENT_ID,
