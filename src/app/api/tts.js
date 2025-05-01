@@ -10,7 +10,7 @@ const client = new textToSpeech.TextToSpeechClient();
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const REDIRECT_URI = 'https://developers.google.com/oauthplayground'; // Or your app's redirect URI
-const ACCESS_TOKEN = process.env.GOOGLE_ACCESS_TOKEN; // Obtain this during OAuth setup
+const REFRESH_TOKEN = process.env.GOOGLE_REFRESH_TOKEN; // Ensure this is set in your environment
 
 const oauth2Client = new google.auth.OAuth2(
   CLIENT_ID,
@@ -41,15 +41,15 @@ export default async function handler(req, res) {
       // Generate MP3
       const [response] = await client.synthesizeSpeech(request);
 
-      // Save MP3 locally
+      // Save MP3 to a temporary directory
       const tempDir = os.tmpdir(); // Get the system's temporary directory
-      const outputPath = path.join(tempDir, 'output.mp3'); // Save the file in the temporary directory
+      const outputPath = path.join(tempDir, 'output.mp3'); // Create a path for the temporary file
       fs.writeFileSync(outputPath, response.audioContent, 'binary');
 
       // Upload MP3 to Google Drive
       const fileMetadata = {
         name: 'output.mp3',
-        parents: ['https://drive.google.com/drive/folders/1bmwWFNEhI-ODs3r9Qh_MXEkThggWQss9'], // Replace with your Google Drive folder ID
+        parents: ['1bmwWFNEhI-ODs3r9Qh_MXEkThggWQss9'], // Replace with your Google Drive folder ID
       };
       const media = {
         mimeType: 'audio/mpeg',
@@ -73,7 +73,15 @@ export default async function handler(req, res) {
         webContentLink: driveResponse.data.webContentLink,
       });
     } catch (error) {
-      console.error(error);
+      console.error('Error:', error.response?.data || error.message);
+
+      // Clean up the temporary file in case of an error
+      const tempDir = os.tmpdir();
+      const outputPath = path.join(tempDir, 'output.mp3');
+      if (fs.existsSync(outputPath)) {
+        fs.unlinkSync(outputPath);
+      }
+
       res.status(500).json({ error: 'Failed to process text-to-speech or upload to Google Drive.' });
     }
   } else {
