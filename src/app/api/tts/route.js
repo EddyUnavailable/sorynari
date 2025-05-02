@@ -1,117 +1,100 @@
-import fs from 'fs';
-import os from 'os';
-import path from 'path';
 import { google } from 'googleapis';
 import textToSpeech from '@google-cloud/text-to-speech';
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
+import { NextResponse } from 'next/server';
 
-// === 1. Setup credentials ===
-const credentialsPath = path.join('/tmp', 'gcloud-key.json');
+// Define the folder where temporary files will be stored
+const TEMP_DIR = os.tmpdir();
 
-if (!fs.existsSync(credentialsPath)) {
-  const base64 = process.env.GOOGLE_CREDENTIALS_BASE64;
-  if (!base64) throw new Error('GOOGLE_CREDENTIALS_BASE64 env var is missing.');
-
-  const json = Buffer.from(base64, 'base64').toString('utf8');
-
-  try {
-    JSON.parse(json); // Validate
-  } catch {
-    throw new Error('Decoded GOOGLE_CREDENTIALS_BASE64 is not valid JSON.');
-  }
-
-  fs.writeFileSync(credentialsPath, json, 'utf8');
-  console.log('✅ Credentials written to:', credentialsPath);
+// Ensure the temporary directory exists
+if (!fs.existsSync(TEMP_DIR)) {
+  fs.mkdirSync(TEMP_DIR);
 }
 
-const client = new textToSpeech.TextToSpeechClient({ keyFilename: credentialsPath });
-
-// === 2. Google Drive Setup ===
-const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
-const REFRESH_TOKEN = process.env.GOOGLE_REFRESH_TOKEN;
-const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
-
-if (!CLIENT_ID || !CLIENT_SECRET || !REFRESH_TOKEN) {
-  throw new Error('Missing Google Drive OAuth credentials');
-}
-
-const oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
-oauth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
-
-const drive = google.drive({ version: 'v3', auth: oauth2Client });
-
-// === 3. POST handler ===
 export async function POST(req) {
-  const outputPath = path.join(os.tmpdir(), 'output.mp3');
+  const outputPath = path.join(TEMP_DIR, `output-${Date.now()}.mp3`);
 
   try {
     console.log('📥 POST /api/tts received');
 
+    // Parse the incoming request
     const body = await req.json();
     const { text } = body;
 
     if (!text) {
-      return new Response(JSON.stringify({ error: 'Text input is required.' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      });
+      // Return an error response for missing input
+      return NextResponse.json({ error: 'Text input is required.' }, { status: 400 });
     }
 
     console.log('🎤 Converting text:', text);
 
-    const request = {
+    // Google Text-to-Speech API setup
+    const ttsClient = new textToSpeech.TextToSpeechClient({
+      keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+    });
+
+    // Prepare the TTS request
+    const ttsRequest = {
       input: { text },
       voice: { languageCode: 'en-US', ssmlGender: 'NEUTRAL' },
       audioConfig: { audioEncoding: 'MP3' },
     };
 
-    const [response] = await client.synthesizeSpeech(request);
+    // Generate the speech
+    const [ttsResponse] = await ttsClient.synthesizeSpeech(ttsRequest);
 
-    fs.writeFileSync(outputPath, response.audioContent, 'binary');
+    // Save the audio file locally
+    fs.writeFileSync(outputPath, ttsResponse.audioContent, 'binary');
     console.log('✅ Audio file written to:', outputPath);
 
-    const fileMetadata = {
-      name: 'output.mp3',
-      parents: ['1bmwWFNEhI-ODs3r9Qh_MXEkThggWQss9'], // Replace with your real folder ID
+    // Google Drive API setup
+    const auth = new google.auth.GoogleAuth({
+      keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+      scopes: ['https://www.googleapis.com/auth/drive.file'],
+    });
+
+    const drive = google.drive({ version: 'v3', auth });
+
+    // Upload the file to Google Drive
+    const driveFileMetadata = {
+      name: `output-${Date.now()}.mp3`,
+      parents: [process.env.GOOGLE_DRIVE_FOLDER_ID],
     };
 
-    const media = {
+    const driveMedia = {
       mimeType: 'audio/mpeg',
       body: fs.createReadStream(outputPath),
     };
 
     const driveResponse = await drive.files.create({
-      resource: fileMetadata,
-      media,
-      fields: 'id, webViewLink, webContentLink',
+      resource: driveFileMetadata,
+      media: driveMedia,
+      fields: 'id, webViewLink',
     });
 
     console.log('📁 Uploaded to Drive:', driveResponse.data);
 
+    // Clean up the temporary file
     fs.unlinkSync(outputPath);
 
-    return new Response(
-      JSON.stringify({
-        message: 'MP3 saved to Google Drive!',
-        driveFileId: driveResponse.data.id,
-        webViewLink: driveResponse.data.webViewLink,
-        webContentLink: driveResponse.data.webContentLink,
-      }),
-      {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' },
-      }
-    );
+    // Return the Drive file details
+    return NextResponse.json({
+      id: driveResponse.data.id,
+      link: driveResponse.data.webViewLink,
+    });
   } catch (error) {
-    console.error('❌ Error in POST /api/tts:', error);
-    if (fs.existsSync(outputPath)) fs.unlinkSync(outputPath);
+    console.error('❌ Error in /api/tts:', error);
 
-    return new Response(
-      JSON.stringify({ error: 'Failed to process TTS or upload to Drive.' }),
-      {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      }
+    // Clean up the temporary file if it exists
+    if (fs.existsSync(outputPath)) {
+      fs.unlinkSync(outputPath);
+    }
+
+    return NextResponse.json(
+      { error: 'Failed to process TTS or upload to Drive.', details: error.message },
+      { status: 500 }
     );
   }
 }
