@@ -4,44 +4,48 @@ import path from 'path';
 import { google } from 'googleapis';
 import textToSpeech from '@google-cloud/text-to-speech';
 
+// === 1. Setup credentials ===
 const credentialsPath = path.join('/tmp', 'gcloud-key.json');
 
-// Ensure credentials file is written
 if (!fs.existsSync(credentialsPath)) {
-  if (!process.env.GOOGLE_CREDENTIALS_JSON) {
-    throw new Error('GOOGLE_CREDENTIALS_JSON env var is missing.');
+  const base64 = process.env.GOOGLE_CREDENTIALS_BASE64;
+  if (!base64) throw new Error('GOOGLE_CREDENTIALS_BASE64 env var is missing.');
+
+  const json = Buffer.from(base64, 'base64').toString('utf8');
+
+  try {
+    JSON.parse(json); // Validate
+  } catch {
+    throw new Error('Decoded GOOGLE_CREDENTIALS_BASE64 is not valid JSON.');
   }
 
-  // Write the JSON to disk
-  fs.writeFileSync(credentialsPath, process.env.GOOGLE_CREDENTIALS_JSON);
+  fs.writeFileSync(credentialsPath, json, 'utf8');
+  console.log('✅ Credentials written to:', credentialsPath);
 }
 
-const client = new textToSpeech.TextToSpeechClient({
-  keyFilename: credentialsPath,
-});
+const client = new textToSpeech.TextToSpeechClient({ keyFilename: credentialsPath });
 
-// Google Drive setup
+// === 2. Google Drive Setup ===
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
-const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
 const REFRESH_TOKEN = process.env.GOOGLE_REFRESH_TOKEN;
+const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
 
-console.log('GOOGLE_CLIENT_ID:', CLIENT_ID ? 'Loaded' : 'Missing');
-console.log('GOOGLE_CLIENT_SECRET:', CLIENT_SECRET ? 'Loaded' : 'Missing');
-console.log('GOOGLE_REFRESH_TOKEN:', REFRESH_TOKEN ? 'Loaded' : 'Missing');
+if (!CLIENT_ID || !CLIENT_SECRET || !REFRESH_TOKEN) {
+  throw new Error('Missing Google Drive OAuth credentials');
+}
 
-const oauth2Client = new google.auth.OAuth2(
-  CLIENT_ID,
-  CLIENT_SECRET,
-  REDIRECT_URI
-);
-
+const oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 oauth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+
 const drive = google.drive({ version: 'v3', auth: oauth2Client });
 
+// === 3. POST handler ===
 export async function POST(req) {
+  const outputPath = path.join(os.tmpdir(), 'output.mp3');
+
   try {
-    console.log('Received POST request at /api/tts');
+    console.log('📥 POST /api/tts received');
 
     const body = await req.json();
     const { text } = body;
@@ -53,7 +57,7 @@ export async function POST(req) {
       });
     }
 
-    console.log('Text-to-Speech input text:', text);
+    console.log('🎤 Converting text:', text);
 
     const request = {
       input: { text },
@@ -62,16 +66,15 @@ export async function POST(req) {
     };
 
     const [response] = await client.synthesizeSpeech(request);
-    console.log('Received audio content from TTS API.');
 
-    const tempDir = os.tmpdir();
-    const outputPath = path.join(tempDir, 'output.mp3');
     fs.writeFileSync(outputPath, response.audioContent, 'binary');
+    console.log('✅ Audio file written to:', outputPath);
 
     const fileMetadata = {
       name: 'output.mp3',
-      parents: ['1bmwWFNEhI-ODs3r9Qh_MXEkThggWQss9'],
+      parents: ['1bmwWFNEhI-ODs3r9Qh_MXEkThggWQss9'], // Replace with your real folder ID
     };
+
     const media = {
       mimeType: 'audio/mpeg',
       body: fs.createReadStream(outputPath),
@@ -82,6 +85,8 @@ export async function POST(req) {
       media,
       fields: 'id, webViewLink, webContentLink',
     });
+
+    console.log('📁 Uploaded to Drive:', driveResponse.data);
 
     fs.unlinkSync(outputPath);
 
@@ -98,9 +103,7 @@ export async function POST(req) {
       }
     );
   } catch (error) {
-    console.error('Error:', error);
-
-    const outputPath = path.join(os.tmpdir(), 'output.mp3');
+    console.error('❌ Error in POST /api/tts:', error);
     if (fs.existsSync(outputPath)) fs.unlinkSync(outputPath);
 
     return new Response(
