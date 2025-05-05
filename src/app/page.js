@@ -7,7 +7,7 @@ export default function HomePage() {
     <div>
       <div>
         <p>Just some info here</p>
-        <TextToSpeech />
+        
       </div>
     </div>
   );
