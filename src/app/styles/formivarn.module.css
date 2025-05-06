@@ -1,3 +1,65 @@
+/* /src/app/styles/formivarn.module.css */
+.racesContainer {
+  background-color: var(--seconday-color);
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  box-sizing: border-box; /* better than content-box in most layouts */
+  width: 70px;
+  left: 0;
+  padding: 10px;
+  position: fixed;
+  z-index: 97;
+  border-bottom: 1px solid var(--border1-color);
+  background: var(--primary2-color);
+  height: 70px;
+  overflow: hidden;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  gap: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  padding-left: 40px;
+  padding-right: 40px;
+  
+  background-color: var(--nav-color);
+}
+
+  .link {
+    color: var(--font1-color);
+    height: 50px;
+    width: 80px;
+    border-radius: 25%;
+    gap: 10px;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    background: var(--color-button);
+    overflow: hidden;
+  }
+  
+  .link:hover {
+    color: #c084fc; /* purple-400 */
+  }
+  
+  .main {
+    margin-top: 70px;
+    margin-left: 70px;
+    background-color: var(--mainbg1-color);
+    font-family: Arial, sans-serif;
+  }
+
+
 .container {
     font-family: Arial, sans-serif;
     margin: 20px;

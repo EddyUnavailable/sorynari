@@ -2,19 +2,23 @@
 @import "tw-animate-css";
 
 :root {
-    --color-primary: #0070f3;
-    --color-secondary: #1db954;
-    --color-accent: #f5a623;
-    --color-bg: #ffffff;
-    --color-text: #333333;
-    --main-color: rgb(0, 0, 0);
-    --secBg-color: rgb(250, 175, 225);
-    --secBg2-color: rgb(250, 100, 225);
-    --mainbg1-color: rgb(100, 150, 250);
-    --mainbg2-color: rgb(50, 125, 250);
-    --border1-color: rgb(125, 125, 100);
-    --border2-color: rgb(125, 125, 125);
-    --main4-color: rgb(250, 175, 225);
+    --primary1-color: rgb(10, 0, 50);
+    --primary2-color: rgb(10, 0, 75);
+    --nav-color: rgb(10, 75, 10);
+    --nav2-color: rgb(10, 200, 10);
+    --button-color: rgb(20, 100, 20);
+    --button2-color: rgb(20, 200, 20);
+    --font1-color: rgb(160, 200, 216);
+    --font2-color: rgb(0, 0, 0);
+    --font3-color: rgb(194, 111, 3);
+    --font4-color: rgb(158, 144, 13);
+    --black1-color: rgb(0, 0, 0);
+    --black2-color: rgb(25, 25, 25);
+    --black3-color: rgb(50, 50, 50);
+    --black4-color: rgb(75, 75, 75);
+    --color1-color: rgb(100, 100, 100);
+    --border1-color: rgb(147, 200, 0);
 }
+
 
 

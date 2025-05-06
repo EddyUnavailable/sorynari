@@ -1,67 +1,60 @@
-/* layout.module.css */
+/* src/app/styles/races.module.css */
 
-/* Global Navigation at the top */
-.globalNav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    padding: 10px;
-    z-index: 1000;
-    display: flex;
+.racesContainer {
+  background-color: var(--seconday-color);
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  box-sizing: content-box;
+  width: 100vw;
+  padding: 10px;
+  position: fixed;
+  z-index: 98;
+  border-bottom: 1px solid var(--border1-color); /* gray-700 */
+  background: var(--primary2-color); /* gray-900 */
+  height: 69px;
+
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  gap: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  padding-left: 40px;
+  padding-right: 40px;
+  height: 50px;
+  background-color: var(--nav-color);
+}
+
+  .link {
+    color: var(--font1-color);
+    height: 50px;
+    width: 80px;
+    border-radius: 25%;
+    gap: 10px;
+    text-align: center;
+    align-content: center;
     justify-content: center;
-    gap: 15px;
+    background: var(--color-button);
+    overflow: hidden;
   }
   
-  .globalNav .link {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-  }
-  
-  .globalNav .link:hover {
-    color: #f7b731;
-  }
-  
-  /* Spacing for content below the fixed navigation */
-  .main {
-    padding-top: 60px; /* Adjust for the height of the global navigation bar */
-  }
-  
-  /* races.module.css */
-  
-  /* Container for the race-specific links */
-  .racesContainer {
-    padding-top: 80px; /* Add space below the global navigation */
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  
-  .raceLinks {
-    margin-top: 20px; /* Space between the global nav and the race-specific links */
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .raceLinks .link {
-    color: #444;
-    font-size: 16px;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #f4f4f9;
-  }
-  
-  .raceLinks .link:hover {
-    background-color: #ddd;
-    cursor: pointer;
+  .link:hover {
+    color: #c084fc; /* purple-400 */
   }
   
   .main {
+    margin-top: 70px;
+    padding-top: 10px; 
     padding: 20px;
-    background-color: #f4f4f9;
+    background-color: var(--mainbg1-color);
     font-family: Arial, sans-serif;
   }
-  

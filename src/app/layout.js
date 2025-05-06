@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import styles from './styles/layout.module.css';
+import "./globals.css";
 
 export const metadata = {
   title: 'Galactic Lore Archive',
   description: 'A universe of stories and civilizations.',
 };
 
-export default function RootLayout({ children }) {
+export default function layout({ children }) {
   return (
     <html lang="en">
       <body className={styles.body}>
