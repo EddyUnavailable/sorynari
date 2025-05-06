@@ -1,0 +1,66 @@
+.tableWrapper {
+    overflow-x: auto;
+    margin: 2rem 0;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    background-color: pink;
+    color: #350655;
+    border: 2px solid #001a4d; /* Dark blue */
+  }
+  
+  .table :global(th),
+.table :global(td) {
+  border: 2px solid #001a4d; /* Dark blue */
+  padding: 0.75rem;
+  text-align: center;
+}
+  
+.table :global(th) {
+    background-color: #222;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .colorDot {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 0 auto;
+    color: inherit; /* Allows currentColor to work */
+    background: radial-gradient(circle at center, #ffffff 0%, currentColor 20%, currentColor 100%);
+    box-shadow: 0 0 4px currentColor, 0 0 10px currentColor;
+    animation: pulseGlow 2.5s infinite ease-in-out;
+  }
+  
+  @keyframes pulseGlow {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 4px currentColor, 0 0 10px currentColor;
+    }
+    50% {
+      transform: scale(1.1);
+      box-shadow: 0 0 6px currentColor, 0 0 14px currentColor;
+    }
+  }
+  .colorDot:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+  /* Specific star type colors */
+  .colorO { color: #5599ff; }       /* Blue */
+.colorB { color: #aaccff; }       /* Blue-White */
+.colorA { color: #ffffff; }       /* White */
+.colorF { color: #ffffcc; }       /* White-Yellow */
+.colorG { color: #ffff00; }       /* Yellow */
+.colorK { color: #ff9900; }       /* Orange */
+.colorM { color: #ff4444; }       /* Red */
+.colorBrownDwarf { color: #663300; }  /* Brown */
+.colorWhiteDwarf { color: #dddddd; }  /* Light gray */
+.colorNeutron { color: #ccccff; }     /* Pale violet */
+.colorBlackHole { color: #000000; }   /* Black */
+  

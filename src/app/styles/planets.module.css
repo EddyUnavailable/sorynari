@@ -1,0 +1,122 @@
+/* planets.module.css */
+.container {
+    padding: 2rem;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .heading {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .tableWrapper {
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    color: #333;
+    border: 2px solid #003366;
+  }
+  
+  .table th,
+  .table td {
+    border: 2px solid #003366;
+    padding: 0.75rem;
+    text-align: center;
+  }
+  
+  .table th {
+    background-color: #003366;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .table td {
+    background-color: #e6f2ff;
+  }
+  
+  .table .planetIcon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+  
+  .table .colorGas {
+    background-color: #ff6666; /* Gas Giant */
+  }
+  
+  .table .colorTerrestrial {
+    background-color: #66cc66; /* Terrestrial */
+  }
+  
+  .table .colorIce {
+    background-color: #3399ff; /* Ice Giant */
+  }
+  
+  .table .colorDwarf {
+    background-color: #9966cc; /* Dwarf Planet */
+  }
+  
+  .table .colorRocky {
+    background-color: #c2b280; /* Rocky */
+  }
+  
+  .table .colorRinged {
+    background-color: #ffcc99; /* Ringed */
+  }
+  
+  .table .colorWater {
+    background-color: #33ccff; /* Waterworld */
+  }
+  
+  .table .colorExoplanet {
+    background-color: #ff9933; /* Exoplanet */
+  }
+  
+  .table .colorDesert {
+    background-color: #ffcc66; /* Desert Planet */
+  }
+  
+  .table .colorGasIcon {
+    background-color: #ff6666;
+  }
+  
+  .table .colorTerrestrialIcon {
+    background-color: #66cc66;
+  }
+  
+  .table .colorIceIcon {
+    background-color: #3399ff;
+  }
+  
+  .table .colorDwarfIcon {
+    background-color: #9966cc;
+  }
+  
+  .table .colorRockyIcon {
+    background-color: #c2b280;
+  }
+  
+  .table .colorRingedIcon {
+    background-color: #ffcc99;
+  }
+  
+  .table .colorWaterIcon {
+    background-color: #33ccff;
+  }
+  
+  .table .colorExoplanetIcon {
+    background-color: #ff9933;
+  }
+  
+  .table .colorDesertIcon {
+    background-color: #ffcc66;
+  }
+  
