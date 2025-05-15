@@ -8,11 +8,19 @@
     margin: 0;
     padding: 0;
   }
+
+  .container {
+    background-color: var(--seconday-color);
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100vw;
+  }
   
   .header {
     display: flex;
     justify-content: center;
-    box-sizing: content-box;
+    align-items: center;
+    box-sizing: border-box;
     width: 100vw;
     padding: 10px;
     position: fixed;
