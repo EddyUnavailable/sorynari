@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const data = {
   speciesName: "Sorynari",
   origin: "Evolved from a cat-monkey hybrid species",
@@ -56,57 +55,55 @@ const data = {
 
 export default function SorynariLore() {
   return (
-    <div className="p-8 max-w-5xl mx-auto space-y-8">
-      <h1 className="text-4xl font-bold text-center">Sorynari Species Overview</h1>
-      <ScrollArea className="h-[80vh] pr-4">
-        <Card>
-          <CardContent className="space-y-4 p-6">
-            <Section title="General Info" content={[
-              `Origin: ${data.origin}`,
-              `Population: ${data.population}`,
-              `Intelligence: ${data.intelligence}`,
-              `Technology Level: ${data.technology}`
-            ]} />
+    <div style={{ padding: "2rem", maxWidth: "800px", margin: "0 auto" }}>
+      <h1 style={{ fontSize: "2.5rem", textAlign: "center", marginBottom: "2rem" }}>
+        Sorynari Species Overview
+      </h1>
+      <div style={{ border: "1px solid #ccc", borderRadius: "8px", padding: "1.5rem" }}>
+        <Section title="General Info" content={[
+          `Origin: ${data.origin}`,
+          `Population: ${data.population}`,
+          `Intelligence: ${data.intelligence}`,
+          `Technology Level: ${data.technology}`
+        ]} />
 
-            <Section title="Physiology" content={[
-              `Height: ${data.physiology.height}`,
-              `Build: ${data.physiology.build}`,
-              `Traits: ${data.physiology.traits}`
-            ]} />
+        <Section title="Physiology" content={[
+          `Height: ${data.physiology.height}`,
+          `Build: ${data.physiology.build}`,
+          `Traits: ${data.physiology.traits}`
+        ]} />
 
-            <Section title="Clothing & Culture" content={[
-              ...data.clothing,
-              ...data.culture
-            ]} />
+        <Section title="Clothing & Culture" content={[
+          ...data.clothing,
+          ...data.culture
+        ]} />
 
-            <Section title="History and Conflict" content={[
-              `Home System: ${data.history.homeSystem}`,
-              `Population Before War: ${data.history.populationPreWar}`,
-              ...data.history.formivarnInvasion,
-              ...data.history.exodus
-            ]} />
+        <Section title="History and Conflict" content={[
+          `Home System: ${data.history.homeSystem}`,
+          `Population Before War: ${data.history.populationPreWar}`,
+          ...data.history.formivarnInvasion,
+          ...data.history.exodus
+        ]} />
 
-            <Section title="The VIV" content={[
-              `Ship Name: ${data.theVIV.name}`,
-              `Description: ${data.theVIV.description}`,
-              ...data.theVIV.capabilities.map(cap => `Capability: ${cap}`),
-              ...data.theVIV.mission.map(m => `Mission Objective: ${m}`),
-              `Current Location: ${data.theVIV.currentLocation}`
-            ]} />
-          </CardContent>
-        </Card>
-      </ScrollArea>
+        <Section title="The VIV" content={[
+          `Ship Name: ${data.theVIV.name}`,
+          `Description: ${data.theVIV.description}`,
+          ...data.theVIV.capabilities.map(cap => `Capability: ${cap}`),
+          ...data.theVIV.mission.map(m => `Mission Objective: ${m}`),
+          `Current Location: ${data.theVIV.currentLocation}`
+        ]} />
+      </div>
     </div>
   );
 }
 
 function Section({ title, content }) {
   return (
-    <div>
-      <h2 className="text-2xl font-semibold mb-2">{title}</h2>
-      <ul className="list-disc list-inside space-y-1">
+    <div style={{ marginBottom: "2rem" }}>
+      <h2 style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{title}</h2>
+      <ul style={{ paddingLeft: "1.25rem" }}>
         {content.map((item, index) => (
-          <li key={index}>{item}</li>
+          <li key={index} style={{ marginBottom: "0.25rem" }}>{item}</li>
         ))}
       </ul>
     </div>

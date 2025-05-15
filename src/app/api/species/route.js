@@ -1,13 +1,19 @@
-// app/api/species/route.js
-
 import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
+function getSupabaseClient() {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!url || !key) {
+    throw new Error('Supabase URL and Service Role Key must be defined');
+  }
+
+  return createClient(url, key);
+}
 
 export async function GET() {
+  const supabase = getSupabaseClient();
+
   const { data, error } = await supabase.from('species_stats').select('*');
 
   if (error) {
@@ -23,6 +29,7 @@ export async function GET() {
 }
 
 export async function POST(request) {
+  const supabase = getSupabaseClient();
   const body = await request.json();
 
   const { data, error } = await supabase.from('species_stats').insert([body]);
