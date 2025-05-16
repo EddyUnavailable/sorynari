@@ -16,7 +16,7 @@
     flex-direction: column;
     background-color: var(--primary2-color);
     
-    width: 100vw;
+    width: 100%;
   }
   
   .header, .header2 {
@@ -94,6 +94,7 @@
 .main {
   margin-left: 120px;
   margin-right: 120px;
+  margin-top: 140px;
   padding: 5px;
   width: calc(100% - 240px);
   border: 4px inset var(--border1-color);
@@ -131,11 +132,12 @@
   }
 
   .main2 {
-  margin-left: 120px;
-  margin-right: 120px;
-  padding: 5px;
-  width: calc(100% - 240px);
-  border: 4px inset var(--border1-color);
+  /* margin-left: 120px;
+  margin-right: 120px; */
+  box-sizing: border-box;
+  padding: 0px;
+  width: 100%;
+  
   }
 
 
@@ -177,6 +179,13 @@
 
 /* Link buttons */
 
+.button {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: var(--color-button);
+  border: 4px outset var(--border1-color);
+}
 .link {
     color: var(--font1-color);
     height: 40px;

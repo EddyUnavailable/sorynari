@@ -19,7 +19,7 @@ export default function FormivarnLayout({ children }) {
       </aside>
 
       {/* MAIN CONTENT */}
-      <main className={styles.main}>
+      <main className={styles.main2}>
         {children}
       </main>
 

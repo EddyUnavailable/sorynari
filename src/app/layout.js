@@ -15,6 +15,7 @@ export default function RootLayout({ children }) {
       <body className={styles.body}>
         <div className={styles.container}>
           <header className={styles.header}>
+            <div className={styles.button}></div>
             <nav className={styles.navBar}>
               <Link href="/" className={styles.link}>🏠 Home</Link>
               <Link href="/universeLore" className={styles.link}>🌌 Universal Lore</Link>
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
               <Link href="/starTable" className={styles.link}>🌌 Star Types</Link>
               <Link href="/planetTypes" className={styles.link}>🌌 Planets</Link>
             </nav>
+            <div className={styles.button}></div>
           </header>
           <div className={styles.header2}>
             <nav className={styles.navBar}>
