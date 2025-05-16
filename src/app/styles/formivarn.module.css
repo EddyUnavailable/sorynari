@@ -1,9 +1,5 @@
 /* /src/app/styles/formivarn.module.css */
-.racesContainer {
-  background-color: var(--seconday-color);
-  padding-left: 20px;
-  padding-right: 20px;
-}
+
 .header {
   display: flex;
   flex-direction: column;
@@ -57,36 +53,4 @@
     color: #c084fc; /* purple-400 */
   }
   
-  .main {
-    margin-top: 70px;
-    margin-left: 70px;
-    background-color: var(--mainbg1-color);
-    font-family: Arial, sans-serif;
-  }
-
-
-.container {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-  }
   
-  .title {
-    color: var(--color-primary);
-  }
-  
-  .subtitle {
-    color: var(--color-secondary);
-  }
-  
-  .list {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .listItem {
-    margin: 10px 0;
-  }
-  
-  .strong {
-    font-weight: bold;
-  }

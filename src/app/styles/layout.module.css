@@ -1,3 +1,5 @@
+/* Main Layout */
+
 /* src/app/styles/layout.module.css */
 
 .body {
@@ -10,28 +12,35 @@
   }
 
   .container {
+    display: flex;
+    flex-direction: column;
     background-color: var(--seconday-color);
-    padding-left: 20px;
-    padding-right: 20px;
+    
     width: 100vw;
   }
   
-  .header {
+  .header, .header2 {
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
     width: 100vw;
-    padding: 10px;
     position: fixed;
-    z-index: 99;
-    border-bottom: 1px solid var(--border1-color); /* gray-700 */
-    background: var(--primary2-color); /* gray-900 */
-    height: 69px;
-    top: 0;
+    z-index: 90;
+    background: var(--primary3-color); /* gray-900 */
+    height: 70px;
   }
+
+  .header {
+    margin-top: 0;
+  }
+
+  .header2 {
+    margin-top: 70px;
+  }
+
   
-  .nav {
+  .navBar {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,27 +51,209 @@
     padding-left: 40px;
     padding-right: 40px;
     height: 50px;
-    background-color: var(--nav-color);
+    background: var(--color-navbg);
+    border-radius: 25px / 50%;
+    border: 4px inset var(--border1-color);
+    z-index: 91;
+    width: 80vw;
   }
   
-  .link {
-    color: var(--font1-color);
+  .mainContainer {
+    display: flex;
+    flex-direction: row;
+  }
+  .sideBarLeft, .sideBarRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 120px;
+  padding: 10px;
+  position: fixed;
+  z-index: 90;
+ 
+  background: var(--primary3-color); /* gray-900 */
+  height: 100%;
+
+}
+
+.sideBarLeft {
+  position: fixed;
+  left: 0;
+  top: 140px; /* to avoid overlap with fixed headers */
+  height: calc(100vh - 140px); /* fills remaining height */
+}
+
+.sideBarRight {
+  position: fixed;
+  right: 0;
+  top: 140px;
+  height: calc(100vh - 140px);
+}
+  
+.main {
+  margin-left: 120px;
+  margin-right: 120px;
+  padding: 16px;
+  width: calc(100% - 240px);
+}
+  /* Layout 2nd */
+
+  .racesContainer2 {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--seconday-color);
+   
+    width: 100%;
+  }
+
+  .navBar2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: fixed;
+    gap: 24px;
+    top: 0;
+    align-self: center;
+    font-size: 14px;
+    font-weight: 500;
+    padding-left: 40px;
+    padding-right: 40px;
     height: 50px;
-    width: 80px;
+    width: 80vw;
+    margin-top: 80px;
+    background: var(--color-navbg);
+    border-radius: 25px / 50%;
+    border: 4px inset var(--border1-color);
+    z-index: 92;
+  }
+
+  .main2 
+
+  /* layout 3rd */
+
+  .racesContainersides {
+    display: flex;
+    flex-direction: row;
+  }
+
+  
+
+.navSideLeft, .navSideRight {
+  top: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100px;
+  padding: 10px;
+  position: fixed;
+  z-index: 93;
+  gap: 10px;
+  border: 4px inset var(--border1-color);
+  background: var(--color-navbg); 
+  height: calc(90vh - 140px);
+} 
+
+.navSideLeft {
+  margin-left: 10px;
+  left: 0;
+}
+
+.navSideRight {
+  margin-right: 10px;
+  right: 0;
+} 
+
+/* Link buttons */
+
+.link {
+    color: var(--font1-color);
+    height: 40px;
+    width: 90px;
     border-radius: 25%;
-    gap: 10px;
+    
     text-align: center;
     align-content: center;
     justify-content: center;
+    border: 4px outset var(--border1-color);
     background: var(--color-button);
     overflow: hidden;
   }
   
   .link:hover {
-    color: #c084fc; /* purple-400 */
+    color: #c084fc; 
   }
-  
-  .main {
-    
-    padding: 2px;
+
+  @keyframes slideInLeft {
+  from {
+    transform: translateX(-120%);
   }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(120%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.navSideLeft {
+  animation: slideInLeft 0.8s ease forwards;
+}
+
+.navSideRight {
+  animation: slideInRight 0.8s ease forwards;
+}
+
+@keyframes slideOutLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideOutRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.navSideLeft.exit {
+  animation: slideOutLeft 0.5s ease-out forwards;
+}
+
+.navSideRight.exit {
+  animation: slideOutRight 0.5s ease-out forwards;
+}
+
+.page-exit-animation {
+  animation: fadeOut 0.4s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}

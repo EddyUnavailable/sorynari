@@ -17,10 +17,12 @@
   position: fixed;
   z-index: 98;
   border-bottom: 1px solid var(--border1-color); /* gray-700 */
-  background: var(--primary2-color); /* gray-900 */
+  background: var(--primary3-color); /* gray-900 */
   height: 69px;
 
 }
+
+
 
 .nav {
   display: flex;
@@ -59,4 +61,44 @@
     padding: 20px;
     background-color: var(--mainbg1-color);
     font-family: Arial, sans-serif;
+  }
+
+  .racesContainerLeft {
+  background-color: var(--seconday-color);
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.main {
+    margin-top: 70px;
+    margin-left: 70px;
+    background-color: var(--mainbg1-color);
+    font-family: Arial, sans-serif;
+  }
+
+
+.container {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  .title {
+    color: var(--color-primary);
+  }
+  
+  .subtitle {
+    color: var(--color-secondary);
+  }
+  
+  .list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .listItem {
+    margin: 10px 0;
+  }
+  
+  .strong {
+    font-weight: bold;
   }
