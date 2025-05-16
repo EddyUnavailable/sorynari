@@ -3,7 +3,7 @@
 /* src/app/styles/layout.module.css */
 
 .body {
-    background: var(--primary2-color);
+    background: var(--primary1-color);
     color: var(--font1-color);
     font-family: sans-serif;
     width: 100vw;
@@ -14,7 +14,7 @@
   .container {
     display: flex;
     flex-direction: column;
-    background-color: var(--seconday-color);
+    background-color: var(--primary2-color);
     
     width: 100vw;
   }
@@ -94,15 +94,16 @@
 .main {
   margin-left: 120px;
   margin-right: 120px;
-  padding: 16px;
+  padding: 5px;
   width: calc(100% - 240px);
+  border: 4px inset var(--border1-color);
 }
   /* Layout 2nd */
 
   .racesContainer2 {
     display: flex;
     flex-direction: column;
-    background-color: var(--seconday-color);
+    background-color: var(--primary2-color);
    
     width: 100%;
   }
@@ -129,7 +130,14 @@
     z-index: 92;
   }
 
-  .main2 
+  .main2 {
+  margin-left: 120px;
+  margin-right: 120px;
+  padding: 5px;
+  width: calc(100% - 240px);
+  border: 4px inset var(--border1-color);
+  }
+
 
   /* layout 3rd */
 
@@ -173,7 +181,7 @@
     color: var(--font1-color);
     height: 40px;
     width: 90px;
-    border-radius: 25%;
+    border-radius: 8px / 25%;
     
     text-align: center;
     align-content: center;

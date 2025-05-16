@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
 export default function RacesLayout({ children }) {
-  const pathname = usePathname()
+  
   return (
     <>
       <div className={styles.racesContainer2}>
@@ -26,18 +26,9 @@ export default function RacesLayout({ children }) {
 
         
         
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={pathname}
-              className={styles.mainx}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 50 }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
-            >
-              {children}
-            </motion.div>
-          </AnimatePresence>
+      <main className={styles.main}>
+        {children} {/* No AnimatePresence here */}
+      </main>
        
       </div>
     </>
