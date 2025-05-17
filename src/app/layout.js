@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={styles.body}>
-        <div className={styles.container}>
+        <div className={styles.container_Root}>
           <header className={styles.header}>
             <div className={styles.button}></div>
             <nav className={styles.navBar}>
@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
           </header>
           <div className={styles.header2}>
             <nav className={styles.navBar}>
-              <Link href="/" className={styles.link}>X</Link>
+              <Link href="/wittenAxisumChannels" className={styles.link}>WAC</Link>
               <Link href="/" className={styles.link}>X</Link>
               <Link href="/" className={styles.link}>X</Link>
               <Link href="/" className={styles.link}>X</Link>
@@ -43,7 +43,7 @@ export default function RootLayout({ children }) {
               <Link href="/" className={styles.link}>X</Link>
             </nav>
           </div>
-          <div className={styles.mainContainer}>
+          <div className={styles.main_Container}>
             <div className={styles.sideBarLeft}>
               <p>Left</p>
             </div>

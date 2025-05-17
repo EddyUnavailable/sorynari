@@ -1,21 +1,21 @@
-// layout for Humans main 3rd in row
+// layout for UniverseLore main 2rd in row
 
 "use client";
 
 import React from 'react';
 import Link from 'next/link';
-import styles from '../../styles/layout.module.css';
+import styles from './../styles/layout.module.css';
 
-const basePath = "/races/humans";
+const basePath = "/universeLore";
 
-export default function HumanLayout({ children }) {
+export default function UniverseLoreLayout({ children }) {
   return (
     <div className={styles.racesContainersides}>
 
       {/* LEFT SIDEBAR */}
       <aside className={styles.navSideLeft}>
-        <Link href={`${basePath}/humanBiology`} className={styles.link}>Biology</Link>
-        <Link href={`${basePath}/humanCommunications`} className={styles.link}>Communications</Link>
+        <Link href={`${basePath}/wittenAxisumChannels`} className={styles.link}>WAC</Link>
+        <Link href={`${basePath}/starField`} className={styles.link}>Starfield</Link>
         <Link href={`${basePath}/humanStats`} className={styles.link}>Stats</Link>
         <Link href={`${basePath}/humanPsychology`} className={styles.link}>Psychology</Link>
         <Link href={`${basePath}/humanCulture`} className={styles.link}>Culture</Link>

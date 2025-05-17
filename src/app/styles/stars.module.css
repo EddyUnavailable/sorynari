@@ -1,14 +1,15 @@
 .tableWrapper {
-    overflow-x: auto;
-    margin: 2rem 0;
-  }
+  overflow-x: auto;
+  
+  max-width: 100%;
+}
   
   .table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.95rem;
-    background-color: pink;
-    color: #350655;
+    font-size: 0.90rem;
+    background-color: rgb(3, 0, 1);
+    color: #90920d;
     border: 2px solid #001a4d; /* Dark blue */
   }
   
@@ -26,16 +27,37 @@
   }
   
   .colorDot {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin: 0 auto;
-    color: inherit; /* Allows currentColor to work */
-    background: radial-gradient(circle at center, #ffffff 0%, currentColor 20%, currentColor 100%);
-    box-shadow: 0 0 4px currentColor, 0 0 10px currentColor;
-    animation: pulseGlow 2.5s infinite ease-in-out;
-  }
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0 auto;
+  background: radial-gradient(circle, 
+    rgba(255, 255, 255, 0.9) 0%, 
+    currentColor 40%, 
+    rgba(0, 0, 0, 0) 100%);
+  box-shadow: 
+    0 0 6px currentColor,
+    0 0 12px currentColor,
+    0 0 20px currentColor;
+  animation: pulseGlow 2.5s ease-in-out infinite;
+  transition: transform 0.3s ease;
+  
+}
+
+  .colorDot::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: currentColor;
+  opacity: 0.2;
+  filter: blur(12px);
+  z-index: -1;
+}
   
   @keyframes pulseGlow {
     0%, 100% {
@@ -48,19 +70,22 @@
     }
   }
   .colorDot:hover {
-    transform: scale(1.2);
-    transition: transform 0.3s ease;
+  transform: scale(1.2);
+  box-shadow: 
+    0 0 8px currentColor,
+    0 0 16px currentColor,
+    0 0 32px currentColor;
 }
   /* Specific star type colors */
-  .colorO { color: #5599ff; }       /* Blue */
-.colorB { color: #aaccff; }       /* Blue-White */
-.colorA { color: #ffffff; }       /* White */
-.colorF { color: #ffffcc; }       /* White-Yellow */
-.colorG { color: #ffff00; }       /* Yellow */
-.colorK { color: #ff9900; }       /* Orange */
-.colorM { color: #ff4444; }       /* Red */
-.colorBrownDwarf { color: #663300; }  /* Brown */
-.colorWhiteDwarf { color: #dddddd; }  /* Light gray */
-.colorNeutron { color: #ccccff; }     /* Pale violet */
-.colorBlackHole { color: #000000; }   /* Black */
+.colorO { color: #3777ff; }       /* Deep Blue (O-type: hottest) */
+.colorB { color: #8fbfff; }       /* Pale Blue-White (B-type) */
+.colorA { color: #e6f1ff; }       /* Icy White (A-type) */
+.colorF { color: #fffbd1; }       /* Pale Yellow-White (F-type) */
+.colorG { color: #ffeb3b; }       /* Bright Yellow (G-type, like our Sun) */
+.colorK { color: #ff9800; }       /* Orange (K-type) */
+.colorM { color: #ff3d3d; }       /* Red (M-type, cooler stars) */
+.colorBrownDwarf { color: #6b3e26; }  /* Dark Brown */
+.colorWhiteDwarf { color: #cccccc; }  /* Soft Gray-White */
+.colorNeutron { color: #bdafff; }     /* Soft Violet Glow */
+.colorBlackHole { color: #111111; }   /* Almost black, but not pure black to show a silhouette */
   

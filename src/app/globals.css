@@ -1,5 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 
 :root {
     --primary1-color: rgb(10, 0, 50);
@@ -18,7 +22,7 @@
     --black3-color: rgb(50, 50, 50);
     --black4-color: rgb(75, 75, 75);
     --color1-color: rgb(100, 100, 100);
-    --border1-color: rgb(23, 20, 177);
+    --border1-color: rgb(7, 122, 113);
     --color-navbg:var(--black1-color)
 }
 

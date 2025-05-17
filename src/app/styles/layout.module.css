@@ -6,12 +6,12 @@
     background: var(--primary1-color);
     color: var(--font1-color);
     font-family: sans-serif;
-    width: 100vw;
+    width: 100%;
     margin: 0;
     padding: 0;
   }
 
-  .container {
+  .container_Root {
     display: flex;
     flex-direction: column;
     background-color: var(--primary2-color);
@@ -48,8 +48,8 @@
     gap: 24px;
     font-size: 14px;
     font-weight: 500;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
     height: 50px;
     background: var(--color-navbg);
     border-radius: 25px / 50%;
@@ -58,46 +58,44 @@
     width: 80vw;
   }
   
-  .mainContainer {
+  .main_Container {
     display: flex;
     flex-direction: row;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
   }
   .sideBarLeft, .sideBarRight {
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  width: 120px;
-  padding: 10px;
+  width: 125px;
+  /* padding: 10px; */
   position: fixed;
   z-index: 90;
- 
+  height: calc(100vh - 140px);
   background: var(--primary3-color); /* gray-900 */
-  height: 100%;
-
+  top: 140px;
 }
 
 .sideBarLeft {
-  position: fixed;
   left: 0;
-  top: 140px; /* to avoid overlap with fixed headers */
-  height: calc(100vh - 140px); /* fills remaining height */
+  border-right: 5px inset var(--border1-color);
 }
 
 .sideBarRight {
-  position: fixed;
   right: 0;
-  top: 140px;
-  height: calc(100vh - 140px);
+  border-left: 5px inset var(--border1-color);
 }
   
 .main {
-  margin-left: 120px;
-  margin-right: 120px;
+  box-sizing: border-box;
+  margin-left: 125px;
+  margin-right: 125px;
   margin-top: 140px;
   padding: 5px;
-  width: calc(100% - 240px);
-  border: 4px inset var(--border1-color);
+  width: calc(100% - 250px);
 }
   /* Layout 2nd */
 
@@ -136,7 +134,7 @@
   margin-right: 120px; */
   box-sizing: border-box;
   padding: 0px;
-  width: 100%;
+  width: calc(100% - 18px);
   
   }
 

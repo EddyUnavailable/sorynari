@@ -1,3 +1,6 @@
+import styles from '../../styles/races.module.css';
+
+
 export default function HumansPage() {
   return (
     <div className="space-y-6">

@@ -4,7 +4,6 @@
 import React from 'react'
 import Link from 'next/link';
 import styles from '../styles/layout.module.css';
-import { AnimatePresence, motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
 export default function RacesLayout({ children }) {
