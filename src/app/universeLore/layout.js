@@ -16,7 +16,7 @@ export default function UniverseLoreLayout({ children }) {
       <aside className={styles.navSideLeft}>
         <Link href={`${basePath}/wittenAxisumChannels`} className={styles.link}>WAC</Link>
         <Link href={`${basePath}/starField`} className={styles.link}>Starfield</Link>
-        <Link href={`${basePath}/humanStats`} className={styles.link}>Stats</Link>
+        <Link href={`${basePath}/galacticTime`} className={styles.link}>Galactic Time</Link>
         <Link href={`${basePath}/humanPsychology`} className={styles.link}>Psychology</Link>
         <Link href={`${basePath}/humanCulture`} className={styles.link}>Culture</Link>
         <Link href={`${basePath}/humanHistory`} className={styles.link}>History</Link>
