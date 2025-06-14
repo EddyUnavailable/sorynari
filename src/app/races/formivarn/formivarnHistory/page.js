@@ -1,5 +1,5 @@
 // src/app/races/formivarn/formivarnHistory
-import styles from '../../../styles/formivarn.module.css';
+import styles from '@/styles/formivarn.module.css';
 
 export default function FormivarnHistory() {
     return (

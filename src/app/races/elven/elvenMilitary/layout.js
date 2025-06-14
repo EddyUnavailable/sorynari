@@ -4,7 +4,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import styles from '../../../styles/layout.module.css';
+import styles from '@/styles/layout.module.css';
 
 const basePath = "/races/elvens/elvenMilitary";
 
