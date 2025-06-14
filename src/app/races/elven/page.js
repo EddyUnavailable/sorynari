@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "@/app/lib/supabase";
 
 export default function NewSpeciesForm() {
   const [formData, setFormData] = useState({
