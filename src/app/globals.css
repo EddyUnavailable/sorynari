@@ -24,7 +24,14 @@
     --color1-color: rgb(100, 100, 100);
     --border1-color: rgb(7, 122, 113);
     --color-navbg:var(--black1-color)
-}
+
+            --planet-size: 300px;
+            --earth-texture-width: 600px; /* Twice the planet size for seamless rotation */
+            --earth-animation-duration: 20s;
+            --clouds-animation-duration: 30s;
+            --glow-color: rgba(0, 100, 255, 0.6);
+            --shadow-color: rgba(0, 0, 0, 0.8);
+        }
 
 
 
