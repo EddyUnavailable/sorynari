@@ -1,4 +1,4 @@
-import styles from '../../styles/universeLore.module.css';
+import styles from '@/styles/universeLore.module.css';
 
 export default function WittenAxisumChannels() {
   return (

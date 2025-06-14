@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/planets.module.css';
+import styles from '@/styles/planets.module.css';
 
 const planetData = [
   {

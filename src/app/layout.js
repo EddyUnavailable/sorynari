@@ -1,7 +1,7 @@
 // Main Layout
 "use client";
 import Link from 'next/link';
-import styles from './styles/layout.module.css';
+import styles from '@/styles/layout.module.css';
 import "./globals.css";
 
 // export const metadata = {
@@ -36,11 +36,12 @@ export default function RootLayout({ children }) {
               <Link href="/" className={styles.link}>X</Link>
               <Link href="/" className={styles.link}>X</Link>
               <Link href="/" className={styles.link}>X</Link>
-              <Link href="/" className={styles.link}>X</Link>
-              <Link href="/" className={styles.link}>X</Link>
-              <Link href="/" className={styles.link}>X</Link>
-              <Link href="/" className={styles.link}>X</Link>
-              <Link href="/" className={styles.link}>X</Link>
+              <Link href="/species/speciesCreator" className={styles.link}>X</Link>
+              <Link href="/species/new" className={styles.link}>X</Link>
+              <Link href="/species/newSpeciesForm" className={styles.link}>X</Link>
+              <Link href="/species" className={styles.link}>X</Link>
+              <Link href="/species/list" className={styles.link}>X</Link>
+
             </nav>
           </div>
           <div className={styles.main_Container}>

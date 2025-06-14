@@ -1,8 +1,12 @@
+// layout for Humans main 3rd in row
+
 "use client";
 
 import React from 'react';
 import Link from 'next/link';
-import styles from '../../styles/layout.module.css';
+import styles from '@/styles/layout.module.css';
+
+const basePath = "/races/formivarn";
 
 export default function FormivarnLayout({ children }) {
   return (
@@ -10,12 +14,16 @@ export default function FormivarnLayout({ children }) {
 
       {/* LEFT SIDEBAR */}
       <aside className={styles.navSideLeft}>
-        <Link href="/races/formivarn/formivarnHistory2" className={styles.link}>🦾 Formivarn</Link>
-        <Link href="/races/formivarn/formivarnHistory21" className={styles.link}>🐾 Sorynari</Link>
-        <Link href="/races/formivarn/formivarnStats" className={styles.link}>Stats</Link>
-        <Link href="/races/formivarn/formivarnTech" className={styles.link}>🌌 Kalari</Link>
-        <Link href="/races/formivarn/formivarnShips" className={styles.link}>🌌 Telnari</Link>
-        <Link href="/races/formivarn/formivarnHistory" className={styles.link}>History</Link>
+        <Link href={`${basePath}/formivarnBiology`} className={styles.link}>Biology</Link>
+        <Link href={`${basePath}/formivarnCommunications`} className={styles.link}>Communications</Link>
+        <Link href={`${basePath}/formivarnStats`} className={styles.link}>Stats</Link>
+        <Link href={`${basePath}/formivarnPsychology`} className={styles.link}>Psychology</Link>
+        <Link href={`${basePath}/formivarnCulture`} className={styles.link}>Culture</Link>
+        <Link href={`${basePath}/formivarnHistory`} className={styles.link}>History</Link>
+        <Link href={`${basePath}/formivarnCivilTech`} className={styles.link}>Civil Tech</Link>
+        <Link href={`${basePath}/formivarnEnvironment`} className={styles.link}>Environment</Link>
+        <Link href={`${basePath}/formivarnPolitics`} className={styles.link}>Politics</Link>
+        <Link href={`${basePath}/formivarnMilitary`} className={styles.link}>Military</Link>
       </aside>
 
       {/* MAIN CONTENT */}
@@ -24,14 +32,7 @@ export default function FormivarnLayout({ children }) {
       </main>
 
       {/* RIGHT SIDEBAR */}
-      <aside className={styles.navSideRight}>
-        <Link href="/races/formivarn/formivarnHistory2" className={styles.link}>🦾 Formivarn</Link>
-        <Link href="/races/formivarn/formivarnHistory21" className={styles.link}>🐾 Sorynari</Link>
-        <Link href="/races/formivarn/formivarnStats" className={styles.link}>Stats</Link>
-        <Link href="/races/formivarn/formivarnTech" className={styles.link}>🌌 Kalari</Link>
-        <Link href="/races/formivarn/formivarnShips" className={styles.link}>🌌 Telnari</Link>
-        <Link href="/races/formivarn/formivarnHistory" className={styles.link}>History</Link>
-      </aside>
+      
 
     </div>
   );

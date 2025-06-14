@@ -1,4 +1,4 @@
-import styles from './../../styles/galacticTIme.module.css';
+import styles from '@/styles/galacticTIme.module.css';
 
 export default function GalacticTime() {
   return (

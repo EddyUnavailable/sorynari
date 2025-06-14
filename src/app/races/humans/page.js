@@ -1,4 +1,4 @@
-import styles from '../../styles/races.module.css';
+import styles from '@/styles/races.module.css';
 
 
 export default function HumansPage() {

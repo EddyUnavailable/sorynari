@@ -1,4 +1,4 @@
-import styles from '../../styles/formivarn.module.css';
+import styles from '@/styles/formivarn.module.css';
 
 export default function Formivarn() {
   return (

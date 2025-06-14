@@ -1,5 +1,5 @@
 
-import styles from "../styles/chapter1.module.css";
+import styles from "@/styles/chapter1.module.css";
 
 export default function storyRules() {
     return (
