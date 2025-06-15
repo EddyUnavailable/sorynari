@@ -165,3 +165,65 @@
     transform: rotate(360deg);
   }
 }
+
+/* stars.module.css */
+.milkyWay {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Adjust to your page */
+  background: linear-gradient(
+    135deg,
+    #0a1a3a 0%, /* Dark blue space */
+    #000022 50%, /* Deep space */
+    #000000 100% /* Black void */
+  );
+  overflow: hidden;
+}
+
+/* Simplified spiral effect */
+.milkyWay::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 40%
+  );
+  transform: translate(-50%, -50%) rotate(30deg);
+  filter: blur(10px);
+  opacity: 0.5;
+  animation: spin 50s linear infinite;
+}
+
+/* Minimal star field */
+.milkyWay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    #ffffff 1px,
+    transparent 1px
+  ) repeat;
+  background-size: 50px 50px;
+  opacity: 0.6;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.8; }
+}
