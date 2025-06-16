@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '@/styles/stars.module.css';
+import styles from '@/styles/galaxyBodies.module.css';
 
 const planetSubTypeData = [
   {
