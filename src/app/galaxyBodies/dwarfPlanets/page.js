@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '@/styles/stars.module.css';
+import styles from '@/styles/galaxyBodies.module.css';
 
 const dwarfPlanetTypeData = [
   {
@@ -27,8 +27,7 @@ const dwarfPlanetTypeData = [
 
 export default function DwarfPlanetTypes() {
   return (
-    <div className={styles.milkyWay}>
-    <div className={styles.container}>
+    <div className={`${styles.container} ${styles.milkyWay}`}>
       <h1 className={styles.heading}>Dwarf Planet Types</h1>
       <div className={styles.tableWrapper}>
         <table className={styles.table}>
@@ -60,7 +59,6 @@ export default function DwarfPlanetTypes() {
           </tbody>
         </table>
       </div>
-    </div>
     </div>
   );
 }

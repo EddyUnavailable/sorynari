@@ -167,20 +167,17 @@
 }
 
 /* stars.module.css */
+/* stars.module.css */
 .milkyWay {
   position: relative;
   width: 100%;
-  height: 100vh; /* Adjust to your page */
-  background: linear-gradient(
-    135deg,
-    #0a1a3a 0%, /* Dark blue space */
-    #000022 50%, /* Deep space */
-    #000000 100% /* Black void */
-  );
+  min-height: 100vh;
   overflow: hidden;
+  background: #0a0a1f; /* Deep space base, matching the dark theme */
+  font-family: Arial, sans-serif;
 }
 
-/* Simplified spiral effect */
+/* Central glow and spiral base */
 .milkyWay::before {
   content: '';
   position: absolute;
@@ -189,17 +186,17 @@
   width: 150%;
   height: 150%;
   background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.3) 0%,
-    transparent 40%
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.2) 0%, /* White glow for core */
+    rgba(150, 150, 200, 0.1) 30%, /* Purple-blue spiral hint */
+    transparent 70%
   );
-  transform: translate(-50%, -50%) rotate(30deg);
-  filter: blur(10px);
-  opacity: 0.5;
-  animation: spin 50s linear infinite;
+  transform: translate(-50%, -50%) rotate(15deg);
+  filter: blur(15px);
+  opacity: 0.7;
 }
 
-/* Minimal star field */
+/* Star field with varied colors */
 .milkyWay::after {
   content: '';
   position: absolute;
@@ -207,22 +204,34 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(
-    circle,
-    #ffffff 1px,
-    transparent 1px
-  ) repeat;
-  background-size: 50px 50px;
+  background: 
+    radial-gradient(circle, rgba(255, 255, 255, 0.5) 0.3px, transparent 0.3px), /* White stars */
+    radial-gradient(circle, rgba(255, 100, 100, 0.4) 0.3px, transparent 0.3px), /* Red stars */
+    radial-gradient(circle, rgba(100, 100, 255, 0.4) 0.3px, transparent 0.3px); /* Blue stars */
+  background-size: 100px 100px, 120px 120px, 150px 150px; /* Varied star spacing */
+  background-position: 0 0, 50px 50px, 80px 80px; /* Offset layers */
   opacity: 0.6;
-  animation: twinkle 2s ease-in-out infinite;
+  animation: twinkle 4s ease-in-out infinite;
 }
 
-/* Animations */
-@keyframes spin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
+/* Table overlay for content */
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  color: #fff;
 }
 
+
+
+.placeholder-icon {
+  width: 30px;
+  height: 30px;
+  background: #666;
+  border-radius: 50%;
+}
+
+/* Animation for star twinkling */
 @keyframes twinkle {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 0.8; }

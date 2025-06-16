@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
               <Link href="/races" className={styles.link}>🌌 Races</Link>
               <Link href="/storyRules" className={styles.link}>🌌 Story Rules</Link>
               <Link href="/chapterOne" className={styles.link}>🌌 The Story</Link>
-              <Link href="/starTable" className={styles.link}>🌌 Star Types</Link>
+              <Link href="/galaxyBodies" className={styles.link}>🌌 Galaxy Design</Link>
               <Link href="/planetTypes" className={styles.link}>🌌 Planets</Link>
               <Link href="/spaceTravelCalculator2" className={styles.link}>🌌 Planets</Link>
             </nav>
