@@ -1,5 +1,9 @@
-import React from 'react';
+"use client"
+import React, { useEffect, useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
 import styles from '@/styles/galaxyBodies.module.css';
+import sunStyles from '@/styles/sun.module.css';
+
 
 const planetSubTypeData = [
   {

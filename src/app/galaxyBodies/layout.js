@@ -23,7 +23,7 @@ export default function GalaxyBodiesLayout({ children }) {
         <Link href={`${basePath}/nebulaes`} className={styles.link}>Nebulaes</Link>
         <Link href={`${basePath}/planetTypes`} className={styles.link}>Planets</Link>
         <Link href={`${basePath}/starTable`} className={styles.link}>Stars</Link>
-        <Link href={`${basePath}/`} className={styles.link}>Empty</Link>
+        <Link href={`${basePath}/subTypes`} className={styles.link}>Sub Type</Link>
       </aside>
 
       {/* MAIN CONTENT */}

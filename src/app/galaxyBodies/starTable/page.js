@@ -1,266 +1,50 @@
-import React from 'react';
+"use client"
+import React, { useEffect, useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
 import styles from '@/styles/galaxyBodies.module.css';
 import sunStyles from '@/styles/sun.module.css';
 
-const starData = [
-  {
-    type: 'O-type',
-    temp: '30,000–50,000 K',
-    size: '15–90× Solar',
-    mass: '15–120 M☉',
-    luminosity: '10^4–10^6 L☉',
-    metallicity: '-0.3 to +0.3',
-    habitableZone: '100–400 AU',
-    planetFrequency: '<5%',
-    environment: 'Clusters, binaries',
-    region: 'Spiral Arms',
-    lifespan: '1–10 million years',
-    planetNotes: 'Unlikely to form stable planets due to intense UV radiation.',
-    lifeLikelihood: 'Extremely low. Too hot and short-lived.',
-    estimated: '~0.0001% (~1 star)',
-    colorClass: 'O',
-  },
-  {
-    type: 'B-type',
-    temp: '10,000–30,000 K',
-    size: '3–18× Solar',
-    mass: '3–18 M☉',
-    luminosity: '10^2–10^4 L☉',
-    metallicity: '-0.4 to +0.4',
-    habitableZone: '10–30 AU',
-    planetFrequency: '~5%',
-    environment: 'Clusters, binaries',
-    region: 'Spiral Arms',
-    lifespan: '10–100 million years',
-    planetNotes: 'Low chance of habitable planets due to high radiation.',
-    lifeLikelihood: 'Very low. Harsh radiation environment.',
-    estimated: '~0.13% (~13 stars)',
-    colorClass: 'B',
-  },
-  {
-    type: 'A-type',
-    temp: '7,500–10,000 K',
-    size: '1.4–2.1× Solar',
-    mass: '1.4–2.1 M☉',
-    luminosity: '5–25 L☉',
-    metallicity: '-0.5 to +0.5',
-    habitableZone: '2–4 AU',
-    planetFrequency: '~10%',
-    environment: '~30% binaries',
-    region: 'Disk',
-    lifespan: '0.5–2 billion years',
-    planetNotes: 'Planets possible, but habitable zones are narrow.',
-    lifeLikelihood: 'Low. Short lifespan limits life development.',
-    estimated: '~0.6% (~60 stars)',
-    colorClass: 'A',
-  },
-  {
-    type: 'F-type',
-    temp: '6,000–7,500 K',
-    size: '1.15–1.4× Solar',
-    mass: '1.15–1.4 M☉',
-    luminosity: '1.5–5 L☉',
-    metallicity: '-0.5 to +0.5',
-    habitableZone: '1.5–2.2 AU',
-    planetFrequency: '~20%',
-    environment: '~33% binaries',
-    region: 'Disk',
-    lifespan: '2–4 billion years',
-    planetNotes: 'Can host stable planets with wider habitable zones.',
-    lifeLikelihood: 'Moderate. Suitable for habitable planets.',
-    estimated: '~3% (~300 stars)',
-    colorClass: 'F',
-  },
-  {
-    type: 'G-type',
-    temp: '5,200–6,000 K',
-    size: '0.8–1.2× Solar',
-    mass: '0.8–1.2 M☉',
-    luminosity: '0.6–1.5 L☉',
-    metallicity: '-0.5 to +0.5',
-    habitableZone: '0.95–1.4 AU',
-    planetFrequency: '~50%',
-    environment: '~33% binaries',
-    region: 'Disk',
-    lifespan: '8–12 billion years',
-    planetNotes: 'Ideal for planetary systems, like our Solar System.',
-    lifeLikelihood: 'High. Stable habitable zone.',
-    estimated: '~7.6% (~760 stars)',
-    colorClass: 'G',
-  },
-  {
-    type: 'K-type',
-    temp: '3,700–5,200 K',
-    size: '0.5–0.9× Solar',
-    mass: '0.5–0.9 M☉',
-    luminosity: '0.1–0.6 L☉',
-    metallicity: '-0.5 to +0.5',
-    habitableZone: '0.2–0.5 AU',
-    planetFrequency: '~60%',
-    environment: '~25% binaries',
-    region: 'Disk',
-    lifespan: '15–30 billion years',
-    planetNotes: 'Long-lived stars with stable habitable zones.',
-    lifeLikelihood: 'Moderate to High. Suitable for life.',
-    estimated: '~12.1% (~1,210 stars)',
-    colorClass: 'K',
-  },
-  {
-    type: 'M-type',
-    temp: '2,400–3,700 K',
-    size: '0.08–0.6× Solar',
-    mass: '0.08–0.6 M☉',
-    luminosity: '0.001–0.08 L☉',
-    metallicity: '-0.5 to +0.5',
-    habitableZone: '0.03–0.1 AU',
-    planetFrequency: '~70%',
-    environment: 'Mostly isolated',
-    region: 'Disk',
-    lifespan: '50–100 billion years',
-    planetNotes: 'Common; habitable zones close, often tidally locked.',
-    lifeLikelihood: 'Moderate. Life possible with challenges.',
-    estimated: '~76.5% (~7,650 stars)',
-    colorClass: 'M',
-  },
-  {
-    type: 'L-type',
-    temp: '1,300–2,400 K',
-    size: '0.07–0.1× Solar',
-    mass: '0.06–0.08 M☉',
-    luminosity: '<0.001 L☉',
-    metallicity: '-0.3 to +0.3',
-    habitableZone: '0.01–0.03 AU',
-    planetFrequency: '~10%',
-    environment: 'Mostly isolated',
-    region: 'Disk',
-    lifespan: '100+ billion years',
-    planetNotes: 'Cool dwarfs; planets likely tidally locked.',
-    lifeLikelihood: 'Low. Extreme conditions for life.',
-    estimated: '~0.5% (~50 stars)',
-    colorClass: 'BrownDwarf',
-  },
-  {
-    type: 'T-type',
-    temp: '700–1,300 K',
-    size: '0.06–0.09× Solar',
-    mass: '0.03–0.06 M☉',
-    luminosity: '<0.0001 L☉',
-    metallicity: '-0.3 to +0.3',
-    habitableZone: 'Negligible',
-    planetFrequency: '<5%',
-    environment: 'Mostly isolated',
-    region: 'Disk',
-    lifespan: '100+ billion years',
-    planetNotes: 'Brown dwarfs; cold planets unlikely.',
-    lifeLikelihood: 'Very low. Insufficient energy.',
-    estimated: '~0.2% (~20 stars)',
-    colorClass: 'BrownDwarf',
-  },
-  {
-    type: 'Y-type',
-    temp: '300–700 K',
-    size: '0.05–0.08× Solar',
-    mass: '0.013–0.03 M☉',
-    luminosity: '<0.00001 L☉',
-    metallicity: '-0.3 to +0.3',
-    habitableZone: 'Negligible',
-    planetFrequency: '<1%',
-    environment: 'Mostly isolated',
-    region: 'Disk',
-    lifespan: '100+ billion years',
-    planetNotes: 'Coolest brown dwarfs; planets rare.',
-    lifeLikelihood: 'Extremely low. Minimal energy.',
-    estimated: '~0.1% (~10 stars)',
-    colorClass: 'BrownDwarf',
-  },
-  {
-    type: 'C-type (Carbon Stars)',
-    temp: '2,500–3,500 K',
-    size: '2–10× Solar',
-    mass: '1–4 M☉',
-    luminosity: '10–100 L☉',
-    metallicity: '+0.1 to +0.5',
-    habitableZone: '0.5–1 AU',
-    planetFrequency: '~5%',
-    environment: 'Isolated or binaries',
-    region: 'Disk',
-    lifespan: '1–3 billion years',
-    planetNotes: 'Rare; carbon-rich, may have exotic planets.',
-    lifeLikelihood: 'Low. Unstable environments.',
-    estimated: '~0.01% (~1 star)',
-    colorClass: 'M',
-  },
-  {
-    type: 'W-type (Wolf-Rayet)',
-    temp: '30,000–200,000 K',
-    size: '10–20× Solar',
-    mass: '10–30 M☉',
-    luminosity: '10^5–10^6 L☉',
-    metallicity: '-0.2 to +0.2',
-    habitableZone: '100–500 AU',
-    planetFrequency: '<1%',
-    environment: 'Clusters, binaries',
-    region: 'Spiral Arms',
-    lifespan: '1–10 million years',
-    planetNotes: 'Unlikely planets due to extreme mass loss.',
-    lifeLikelihood: 'Extremely low. Hostile environment.',
-    estimated: '~0.0001% (~1 star)',
-    colorClass: 'O',
-  },
-  {
-    type: 'White Dwarfs',
-    temp: '8,000–40,000 K (initial)',
-    size: '~0.01× Solar',
-    mass: '0.5–1.4 M☉',
-    luminosity: '0.0001–0.01 L☉',
-    metallicity: '-1.0 to +0.5',
-    habitableZone: '0.01–0.05 AU',
-    planetFrequency: '~10%',
-    environment: 'Isolated or binaries',
-    region: 'Disk, Halo',
-    lifespan: '10+ billion years',
-    planetNotes: 'May retain planetary debris; new planets unlikely.',
-    lifeLikelihood: 'Very low. Inactive remnants.',
-    estimated: '~0.5% (~50 stars)',
-    colorClass: 'WhiteDwarf',
-  },
-  {
-    type: 'Neutron Stars',
-    temp: '100,000–1,000,000 K',
-    size: '~10–20 km',
-    mass: '1.1–2.0 M☉',
-    luminosity: '10^–5–10^–3 L☉',
-    metallicity: '-0.5 to +0.5',
-    habitableZone: 'Negligible',
-    planetFrequency: '<1%',
-    environment: 'Isolated or binaries',
-    region: 'Disk',
-    lifespan: '10+ billion years',
-    planetNotes: 'Extreme gravity and radiation make planets unstable.',
-    lifeLikelihood: 'Extremely low. Hostile environment.',
-    estimated: '~0.001% (~0.1 stars)',
-    colorClass: 'NeutronStar',
-  },
-  {
-    type: 'Black Holes',
-    temp: 'Negligible (Hawking)',
-    size: 'Singularity (~0 km)',
-    mass: '3–100 M☉',
-    luminosity: 'Negligible',
-    metallicity: '-0.5 to +0.5',
-    habitableZone: 'None',
-    planetFrequency: '0%',
-    environment: 'Isolated or binaries',
-    region: 'Disk',
-    lifespan: 'Near-eternal',
-    planetNotes: 'No conventional planetary systems.',
-    lifeLikelihood: 'None. Extreme gravity.',
-    estimated: '~0.0001% (~0.01 stars)',
-    colorClass: 'BlackHole',
-  },
-];
+// Initialize Supabase client
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+);
 
 export default function StarTypesPage() {
+  const [starData, setStarData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch star data from Supabase on component mount
+  useEffect(() => {
+    async function fetchStarData() {
+      try {
+        const { data, error } = await supabase
+          .from('stars')
+          .select('*')
+          .order('id', { ascending: true }); // Optional: Order by id for consistency
+        if (error) {
+          throw error;
+        }
+        setStarData(data);
+        setLoading(false);
+      } catch (err) {
+        setError('Failed to fetch star data: ' + err.message);
+        setLoading(false);
+      }
+    }
+    fetchStarData();
+  }, []);
+
+  if (loading) {
+    return <div className={styles.container}>Loading...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.container}>Error: {error}</div>;
+  }
+
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>Star Types in a 1,000 × 1,000 × 1,000 Light-Year Cube</h1>
@@ -299,7 +83,7 @@ export default function StarTypesPage() {
                       star.type === 'White Dwarfs' ? sunStyles.WhiteDwarf :
                       star.type === 'Neutron Stars' ? sunStyles.NeutronStar :
                       star.type === 'Black Holes' ? sunStyles.BlackHole :
-                      sunStyles[star.colorClass] || ''
+                      sunStyles[star.color_class] || ''
                     }`}
                     title={star.type}
                     aria-label={star.type}
@@ -310,13 +94,13 @@ export default function StarTypesPage() {
                 <td>{star.mass}</td>
                 <td>{star.luminosity}</td>
                 <td>{star.metallicity}</td>
-                <td>{star.habitableZone}</td>
-                <td>{star.planetFrequency}</td>
+                <td>{star.habitable_zone}</td>
+                <td>{star.planet_frequency}</td>
                 <td>{star.environment}</td>
                 <td>{star.region}</td>
                 <td>{star.lifespan}</td>
-                <td>{star.planetNotes}</td>
-                <td>{star.lifeLikelihood}</td>
+                <td>{star.planet_notes}</td>
+                <td>{star.life_likelihood}</td>
                 <td>{star.estimated}</td>
               </tr>
             ))}
@@ -337,7 +121,7 @@ export default function StarTypesPage() {
 
         <h3 className={styles.categoryTitle}>Spectral Subgroups (0–9)</h3>
         <p className={styles.paragraph}>
-          Each spectral type (O, B, A, F, G, K, M) is divided into subgroups from 0 to 9, indicating finer temperature differences within the type. Subgroup 0 is the hottest, and 9 is the coolest for that type. For example, a G2 star like the Sun (5,500 K) is cooler than a G0 star but hotter than a G5 star. Subgroups refine classifications for precise stellar modeling. Examples include Sirius (A1, ~9,900 K), Vega (A0, ~9,600 K), and Proxima Centauri (M5.5, ~3,000 K).
+          Each spectral type (O, B, A, F, G, K, M) is divided into subgroups from 0 to 9, indicating finer temperature differences within the type. Subgroup 0 is the hottest, and 9 is the coolest for that type. For example, a G2 star like the Sun (5,500 K) is cooler than a G0 star but hotter than a G5 star. Subgroups refine classifications for precise stellar modeling. Examples include Sirius (A1, ~9,900 K), Vega (A0, ~9,600 K), and Proxima Centauri (M5.5, ~3山县K).
         </p>
 
         <h3 className={styles.categoryTitle}>Beyond OBAFGKM</h3>
